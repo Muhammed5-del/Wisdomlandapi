@@ -1,0 +1,1756 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wisdomland Academy | Nurturing Minds, Shaping Tomorrow</title>
+    <style>
+        :root {
+            --navy-dark: #0f172a;
+            --navy-blue: #1e3a8a;
+            --accent-blue: #2563eb;
+            --light-blue: #eff6ff;
+            --gold-main: #f59e0b;
+            --gold-light: #fef3c7;
+            --gold-hover: #d97706;
+            --slate-100: #f1f5f9;
+            --slate-200: #e2e8f0;
+            --slate-600: #475569;
+            --slate-800: #1e293b;
+            --white: #ffffff;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius-md: 12px;
+            --radius-lg: 18px;
+            --radius-full: 9999px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #f8fafc;
+            color: var(--slate-800);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-family: inherit;
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ================= HEADER ================= */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--slate-200);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img-wrapper {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--gold-main);
+            padding: 2px;
+            background: var(--white);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .logo-text h2 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--navy-dark);
+            line-height: 1;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text span {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--gold-main);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-link {
+            padding: 8px 16px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--slate-800);
+            border-radius: var(--radius-md);
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--navy-blue);
+            background-color: var(--slate-100);
+        }
+
+        .btn-apply {
+            background-color: var(--navy-blue);
+            color: var(--white);
+            font-weight: 700;
+            padding: 10px 22px;
+            border-radius: var(--radius-full);
+            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.25);
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .btn-apply:hover {
+            background-color: var(--navy-dark);
+            transform: translateY(-2px);
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--slate-800);
+            padding: 8px;
+        }
+
+        .mobile-dropdown {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            border-bottom: 1px solid var(--slate-200);
+            padding: 20px;
+            box-shadow: var(--shadow-xl);
+            z-index: 999;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .mobile-dropdown.active {
+            display: flex;
+        }
+
+        /* ================= HERO ================= */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            padding-top: 100px;
+            padding-bottom: 60px;
+            display: flex;
+            align-items: center;
+            background-color: var(--navy-dark);
+            color: var(--white);
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(15, 23, 42, 0.92) 0%,
+                rgba(30, 58, 138, 0.85) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .badge-welcome {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--gold-main);
+            padding: 6px 16px;
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .gold-text {
+            color: var(--gold-main);
+        }
+
+        .hero-desc {
+            font-size: 1.15rem;
+            color: var(--slate-200);
+            margin-bottom: 35px;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background-color: var(--gold-main);
+            color: var(--navy-dark);
+            font-weight: 800;
+            padding: 14px 30px;
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--gold-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-weight: 700;
+            padding: 14px 30px;
+            border-radius: var(--radius-md);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-image-card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px;
+            border-radius: 24px;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .hero-image-card img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+
+        .floating-badge {
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            background: var(--white);
+            color: var(--slate-800);
+            padding: 16px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid var(--slate-100);
+            max-width: 260px;
+        }
+
+        .floating-badge-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: var(--light-blue);
+            color: var(--navy-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        /* ================= STATS ================= */
+        .stats-section {
+            position: relative;
+            z-index: 20;
+            margin-top: -40px;
+        }
+
+        .stats-grid {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid var(--slate-200);
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--navy-blue);
+            margin-bottom: 4px;
+        }
+
+        .stat-item p {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--slate-600);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ================= SECTIONS ================= */
+        .section {
+            padding: 90px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px auto;
+        }
+
+        .section-subtitle {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--navy-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: var(--light-blue);
+            padding: 4px 14px;
+            border-radius: var(--radius-full);
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: var(--navy-dark);
+            margin-bottom: 12px;
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 4px;
+            background-color: var(--gold-main);
+            margin: 0 auto 16px auto;
+            border-radius: 2px;
+        }
+
+        /* ================= CARDS ================= */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            border: 1px solid var(--slate-200);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: rgba(30, 58, 138, 0.2);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .card-icon.blue { background: #dbeafe; color: #1e40af; }
+        .card-icon.amber { background: #fef3c7; color: #d97706; }
+        .card-icon.emerald { background: #d1fae5; color: #047857; }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--navy-dark);
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: var(--slate-600);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ================= PROGRAMS ================= */
+        .program-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--slate-200);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .program-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .program-img-box {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .program-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .program-card:hover .program-img-box img {
+            transform: scale(1.08);
+        }
+
+        .program-number {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--navy-dark);
+            color: var(--white);
+            font-weight: 800;
+            font-size: 0.9rem;
+            padding: 4px 12px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .program-body {
+            padding: 24px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .program-body h3 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--navy-dark);
+            margin-bottom: 10px;
+        }
+
+        .program-body p {
+            font-size: 0.9rem;
+            color: var(--slate-600);
+            margin-bottom: 20px;
+        }
+
+        .btn-link {
+            color: var(--navy-blue);
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: gap 0.2s ease;
+        }
+
+        .btn-link:hover {
+            gap: 10px;
+            color: var(--accent-blue);
+        }
+
+        /* ================= BANNER ================= */
+        .banner-box {
+            background: var(--navy-dark);
+            border-radius: 24px;
+            padding: 50px;
+            color: var(--white);
+            margin-top: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .banner-text h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-top: 8px;
+            margin-bottom: 16px;
+        }
+
+        .banner-text p {
+            color: var(--slate-200);
+            margin-bottom: 24px;
+            font-size: 0.95rem;
+        }
+
+        .banner-img-wrapper {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            height: 280px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .banner-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ================= GALLERY ================= */
+        .bg-dark-section {
+            background-color: var(--navy-dark);
+            color: var(--white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            height: 240px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to top,
+                rgba(15, 23, 42, 0.9) 0%,
+                transparent 60%
+            );
+            display: flex;
+            align-items: flex-end;
+            padding: 16px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--gold-main);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            opacity: 1;
+        }
+
+        /* ================= NEWS ================= */
+        .news-list {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .news-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            border: 1px solid var(--slate-200);
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease;
+        }
+
+        .news-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .news-date {
+            background: var(--navy-dark);
+            color: var(--white);
+            min-width: 80px;
+            height: 80px;
+            border-radius: var(--radius-md);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .news-date-day {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--gold-main);
+            line-height: 1;
+        }
+
+        .news-date-month {
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .news-content h3 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--navy-dark);
+            margin-bottom: 6px;
+        }
+
+        .news-content p {
+            font-size: 0.9rem;
+            color: var(--slate-600);
+        }
+
+        .news-status {
+            text-align: center;
+            padding: 25px;
+            color: var(--slate-600);
+            background: var(--slate-100);
+            border-radius: var(--radius-lg);
+        }
+
+        /* ================= CTA ================= */
+        .cta-banner {
+            background: linear-gradient(
+                135deg,
+                var(--navy-blue) 0%,
+                var(--navy-dark) 100%
+            );
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .cta-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            text-align: left;
+        }
+
+        /* ================= CONTACT ================= */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 40px;
+        }
+
+        .contact-info-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            border: 1px solid var(--slate-200);
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-md);
+            background: var(--light-blue);
+            color: var(--navy-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-details h4 {
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(--navy-dark);
+            margin-bottom: 2px;
+        }
+
+        .contact-details p {
+            font-size: 0.9rem;
+            color: var(--slate-600);
+        }
+
+        .contact-form-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 36px;
+            border: 1px solid var(--slate-200);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--slate-800);
+            margin-bottom: 6px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1px solid var(--slate-200);
+            font-size: 0.95rem;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background-color: var(--navy-blue);
+            color: var(--white);
+            font-weight: 800;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--navy-dark);
+        }
+
+        .alert-success {
+            display: none;
+            margin-top: 20px;
+            padding: 16px;
+            background-color: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            color: #065f46;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* ================= FOOTER ================= */
+        .footer {
+            background-color: var(--navy-dark);
+            color: var(--slate-200);
+            padding-top: 70px;
+            padding-bottom: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-top: 12px;
+            line-height: 1.6;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            padding-left: 10px;
+            border-left: 3px solid var(--gold-main);
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-links a {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-main);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 24px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        /* ================= MODALS ================= */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-box {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            max-width: 500px;
+            width: 100%;
+            padding: 30px;
+            position: relative;
+            box-shadow: var(--shadow-xl);
+            animation: modalFadeIn 0.25s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.2rem;
+            color: var(--slate-600);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--slate-100);
+        }
+
+        .modal-close:hover {
+            background: var(--slate-200);
+        }
+
+        .modal-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: var(--light-blue);
+            color: var(--navy-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+        }
+
+        .modal-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--navy-dark);
+            margin-bottom: 10px;
+        }
+
+        .modal-body {
+            font-size: 0.95rem;
+            color: var(--slate-600);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .svg-icon {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        /* ================= RESPONSIVE ================= */
+        @media (max-width: 992px) {
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-desc { margin: 0 auto 30px auto; }
+            .hero-buttons { justify-content: center; }
+            .hero-image-card { display: none; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .grid-3 { grid-template-columns: 1fr; }
+            .banner-box { grid-template-columns: 1fr; padding: 32px; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .contact-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .cta-flex { flex-direction: column; text-align: center; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu, .btn-apply-wrapper { display: none; }
+            .mobile-toggle { display: block; }
+            .hero-title { font-size: 2.5rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); padding: 20px; }
+            .stat-item h3 { font-size: 1.6rem; }
+            .news-card { flex-direction: column; align-items: flex-start; }
+            .form-row { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 0 14px; }
+            .hero-title { font-size: 2rem; }
+            .section { padding: 65px 0; }
+            .section-title { font-size: 2rem; }
+            .news-card { padding: 18px; }
+            .contact-form-card, .contact-info-card { padding: 22px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="#home" class="logo-box">
+                    <div class="logo-img-wrapper">
+                        <img src="wisdomlamdLogo.png" alt="Wisdomland Logo">
+                    </div>
+                    <div class="logo-text">
+                        <h2>WISDOMLAND</h2>
+                        <span>ACADEMY</span>
+                    </div>
+                </a>
+                
+                <nav class="nav-menu">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#about" class="nav-link">About Us</a>
+                    <a href="#programs" class="nav-link">Academics</a>
+                    <a href="#gallery" class="nav-link">Campus Life</a>
+                    <a href="#news" class="nav-link">News & Events</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </nav>
+
+                <div class="btn-apply-wrapper">
+                    <a href="#contact" class="btn-apply">
+                        <svg class="svg-icon" viewBox="0 0 24 24">
+                            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                        </svg>
+                        Apply Now
+                    </a>
+                </div>
+
+                <button class="mobile-toggle" onclick="toggleMobileMenu()" aria-label="Menu">
+                    <svg class="svg-icon" viewBox="0 0 24 24" style="font-size:1.8rem;">
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================= MOBILE MENU ================= -->
+    <div id="mobileDropdown" class="mobile-dropdown">
+        <a href="#home" onclick="toggleMobileMenu()" class="nav-link">Home</a>
+        <a href="#about" onclick="toggleMobileMenu()" class="nav-link">About Us</a>
+        <a href="#programs" onclick="toggleMobileMenu()" class="nav-link">Academics</a>
+        <a href="#gallery" onclick="toggleMobileMenu()" class="nav-link">Campus Life</a>
+        <a href="#news" onclick="toggleMobileMenu()" class="nav-link">News & Events</a>
+        <a href="#contact" onclick="toggleMobileMenu()" class="nav-link">Contact</a>
+        <a href="#contact" onclick="toggleMobileMenu()" class="btn-apply" style="justify-content:center; width:100%; margin-top:8px;">
+            Apply Now
+        </a>
+    </div>
+
+    <!-- ================= HERO ================= -->
+    <section id="home" class="hero">
+        <div class="hero-bg">
+            <img src="wisdomlamdImage2.jpg" alt="Wisdomland Academy Campus">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div>
+                    <div class="badge-welcome">
+                        ★ WELCOME TO WISDOMLAND ACADEMY
+                    </div>
+                    <h1 class="hero-title">
+                        Nurturing Minds.<br>
+                        <span class="gold-text">Shaping Tomorrow.</span>
+                    </h1>
+                    <p class="hero-desc">
+                        Empowering students through high-quality education, critical thinking, and character building to discover their full potential and achieve lifelong success.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#programs" class="btn-primary">
+                            Explore Programs
+                            <svg class="svg-icon" viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                            </svg>
+                        </a>
+                        <a href="#about" class="btn-secondary">Learn More</a>
+                    </div>
+                </div>
+                <div class="hero-image-card">
+                    <img src="wisdomlamdImage3.jpg" alt="Wisdomland Academy Life">
+                    <div class="floating-badge">
+                        <div class="floating-badge-icon">🎓</div>
+                        <div>
+                            <h4 style="font-size:0.9rem; font-weight:800;">25+ Years</h4>
+                            <p style="font-size:0.75rem; color:var(--slate-600);">Rich Educational Heritage</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= STATS ================= -->
+    <div class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>1,700+</h3>
+                    <p>Enrolled Students</p>
+                </div>
+                <div class="stat-item">
+                    <h3>70+</h3>
+                    <p>Expert Educators</p>
+                </div>
+                <div class="stat-item">
+                    <h3>25+</h3>
+                    <p>Years of Excellence</p>
+                </div>
+                <div class="stat-item">
+                    <h3>99%</h3>
+                    <p>Academic Success Rate</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= ABOUT ================= -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">WHO WE ARE</span>
+                <h2 class="section-title">About Our Academy</h2>
+                <div class="section-divider"></div>
+                <p style="color:var(--slate-600);">
+                    At Wisdomland Academy, we believe every child possesses unique potential. We nurture future leaders with high academic standards, strong moral values, and innovative thinking.
+                </p>
+            </div>
+
+            <div class="grid-3">
+                <div class="card">
+                    <div>
+                        <div class="card-icon blue">🎓</div>
+                        <h3>Quality Education</h3>
+                        <p>Providing rigorous curriculum, inspiring classroom learning, and hands-on STEM education that builds a strong academic foundation.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <div class="card-icon amber">🌱</div>
+                        <h3>Holistic Growth</h3>
+                        <p>Fostering academic, social, and emotional development to shape well-rounded individuals ready to contribute positively to society.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <div class="card-icon emerald">⭐</div>
+                        <h3>Excellence & Leadership</h3>
+                        <p>Encouraging creative inquiry, scientific curiosity, responsibility, and consistent excellence across all educational levels.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="banner-box">
+                <div class="banner-text">
+                    <span style="color:var(--gold-main); font-weight:800; font-size:0.8rem; text-transform:uppercase;">
+                        Our Campus
+                    </span>
+                    <h3>A Safe and Inspiring Learning Environment</h3>
+                    <p>Equipped with state-of-the-art computer labs, well-stocked libraries, spacious athletic fields, and modern, clean classrooms.</p>
+                    <a href="#contact" class="btn-primary">Schedule a Campus Visit</a>
+                </div>
+                <div class="banner-img-wrapper">
+                    <img src="wisdomlamdImage.jpg" alt="Wisdomland Campus">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= PROGRAMS ================= -->
+    <section id="programs" class="section" style="background-color:var(--white);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">WHAT WE OFFER</span>
+                <h2 class="section-title">Academic Programs</h2>
+                <div class="section-divider"></div>
+                <p style="color:var(--slate-600);">Tailored educational programs designed for every stage of your child's growth.</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="program-card">
+                    <div class="program-img-box">
+                        <img src="wisdomlamdStudent1.jpg" alt="Early Education">
+                        <span class="program-number">01</span>
+                    </div>
+                    <div class="program-body">
+                        <div>
+                            <h3>Early Childhood Education</h3>
+                            <p>Nurturing young minds through play-based learning, foundational literacy, numeracy, and positive social interaction.</p>
+                        </div>
+                        <button onclick="openModal(
+                            'Early Childhood Education',
+                            'Our Early Childhood program focuses on nurturing curiosity, language development, early math concepts, and social confidence in a joyful, secure environment.'
+                        )" class="btn-link">Learn More →</button>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-img-box">
+                        <img src="wisdomlamdStudent2.jpg" alt="Primary School">
+                        <span class="program-number">02</span>
+                    </div>
+                    <div class="program-body">
+                        <div>
+                            <h3>Primary Education</h3>
+                            <p>Building solid foundations in mathematics, science, languages, and digital skills through interactive problem solving.</p>
+                        </div>
+                        <button onclick="openModal(
+                            'Primary Education',
+                            'Primary students develop core competencies in mathematics, science, languages, ICT, and critical reasoning with hands-on learning experiences.'
+                        )" class="btn-link">Learn More →</button>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-img-box">
+                        <img src="wisdomlamdStudent3.jpg" alt="Secondary School">
+                        <span class="program-number">03</span>
+                    </div>
+                    <div class="program-body">
+                        <div>
+                            <h3>Secondary Education</h3>
+                            <p>Preparing high school students for national examinations, higher education, and future career pathways with STEM & career guidance.</p>
+                        </div>
+                        <button onclick="openModal(
+                            'Secondary Education',
+                            'Our comprehensive secondary curriculum emphasizes advanced STEM subjects, laboratory research, exam preparation, and career counseling.'
+                        )" class="btn-link">Learn More →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= GALLERY ================= -->
+    <section id="gallery" class="section bg-dark-section">
+        <div class="container">
+            <div class="section-header" style="color:var(--white);">
+                <span class="section-subtitle" style="background:rgba(255,255,255,0.1); color:var(--gold-main);">
+                    CAMPUS LIFE
+                </span>
+                <h2 class="section-title" style="color:var(--white);">Life at Wisdomland Academy</h2>
+                <p style="color:var(--slate-200);">Discover dynamic classroom activities, collaborative projects, and vibrant student engagement.</p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="wisdomlamdStudent1.jpg" alt="ICT Lab">
+                    <div class="gallery-caption">ICT & Computer Science Lab</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="wisdomlamdStudent2.jpg" alt="Classroom Discussion">
+                    <div class="gallery-caption">Interactive Classroom Discussions</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="wisdomlamdStudent3.jpg" alt="Passionate Scholars">
+                    <div class="gallery-caption">Engaged & Passionate Scholars</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="wisdomlamdStudent4.jpg" alt="Teacher Mentorship">
+                    <div class="gallery-caption">Dedicated Educator Mentorship</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CTA ================= -->
+    <div class="cta-banner">
+        <div class="container">
+            <div class="cta-flex">
+                <div>
+                    <span style="color:var(--gold-main); font-weight:800; font-size:0.85rem; text-transform:uppercase;">
+                        READY TO JOIN US?
+                    </span>
+                    <h2 style="font-size:2rem; font-weight:800; margin-top:4px;">Enroll Your Child Today</h2>
+                    <p style="color:var(--slate-200); margin-top:6px;">Admissions are now open for the upcoming academic year.</p>
+                </div>
+                <a href="#contact" class="btn-primary" style="white-space:nowrap;">Request Admission Info</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= NEWS ================= -->
+    <section id="news" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">NEWS & ANNOUNCEMENTS</span>
+                <h2 class="section-title">Latest Updates</h2>
+                <div class="section-divider"></div>
+                <p style="color:var(--slate-600);">Stay updated with the latest announcements, events, and activities from Wisdomland Academy.</p>
+            </div>
+            <div class="news-list" id="publicNewsList">
+                <div class="news-status">Loading latest news...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section id="contact" class="section" style="background-color:var(--white);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">CONTACT US</span>
+                <h2 class="section-title">Get in Touch</h2>
+                <div class="section-divider"></div>
+                <p style="color:var(--slate-600);">Have questions regarding enrollment, tuition, or campus tours? Send us a message.</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info-card">
+                    <h3 style="font-size:1.2rem; font-weight:800; color:var(--navy-dark);">Contact Information</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h4>Address</h4>
+                            <p>Addis Ababa, Ethiopia</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-details">
+                            <h4>Phone Number</h4>
+                            <p>+251 11 XXX XXXX / +251 9XX XXX XXX</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-details">
+                            <h4>Email Address</h4>
+                            <p>WisdomlandAcademy@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">⏰</div>
+                        <div class="contact-details">
+                            <h4>Working Hours</h4>
+                            <p>Monday - Friday: 8:00 AM - 5:00 PM</p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:15px; border-top:1px solid var(--slate-200); padding-top:20px;">
+                        <h4 style="font-size:0.95rem; font-weight:800; color:var(--navy-dark); margin-bottom:8px;">New Student Registration</h4>
+                        <p style="font-size:0.85rem; color:var(--slate-600); margin-bottom:15px;">Are you a student registering for the new academic year?</p>
+                        <button class="btn-primary" onclick="openRegistrationModal()" style="width:100%; justify-content:center;">
+                            🎓 Register Student Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- CONTACT FORM -->
+                <div class="contact-form-card">
+                    <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Full Name *</label>
+                                <input type="text" id="contactName" class="form-control" required placeholder="e.g. John Doe">
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address *</label>
+                                <input type="email" id="contactEmail" class="form-control" name="email" required placeholder="name@example.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Subject</label>
+                            <input type="text" id="contactSubject" class="form-control" placeholder="Inquiry about admissions">
+                        </div>
+                        <div class="form-group">
+                            <label>Message *</label>
+                            <textarea id="contactMessage" class="form-control" required placeholder="Type your message here..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Send Message</button>
+                    </form>
+                    <div id="formAlert" class="alert-success">
+                        ✓ Thank you! Your message has been sent to the administration.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= REGISTRATION MODAL ================= -->
+    <div id="registrationModal" class="modal-overlay" onclick="closeRegistrationModalOnOutside(event)">
+        <div class="modal-box" style="max-width:650px; max-height:90vh; overflow-y:auto;">
+            <button class="modal-close" onclick="closeRegistrationModal()">✕</button>
+            <div class="modal-icon">🎓</div>
+            <h3 class="modal-title">Student Registration Form</h3>
+            <p class="modal-body" style="margin-bottom:15px;">Please fill out all the student details carefully to register in the portal.</p>
+            
+            <form id="fullRegistrationForm" onsubmit="handleFullRegistrationSubmit(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>First Name *</label>
+                        <input type="text" id="regFirstName" class="form-control" placeholder="First Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Father's Name *</label>
+                        <input type="text" id="regFatherName" class="form-control" placeholder="Father's Name" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Grandfather's Name</label>
+                        <input type="text" id="regGrandfatherName" class="form-control" placeholder="Grandfather's Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Student ID *</label>
+                        <input type="text" id="regStudentID" class="form-control" placeholder="WLA-2026-XXXX" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Email Address *</label>
+                        <input type="email" id="regEmail" class="form-control" placeholder="student@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" id="regPhone" class="form-control" placeholder="+251 911 000000" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Parent / Guardian Name *</label>
+                        <input type="text" id="regGuardianName" class="form-control" placeholder="Guardian Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Parent Phone Number *</label>
+                        <input type="tel" id="regGuardianPhone" class="form-control" placeholder="+251 911 000000" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Address / Region / City *</label>
+                    <input type="text" id="regAddress" class="form-control" placeholder="e.g. Addis Ababa, Bole Sub-city" required>
+                </div>
+                <div class="form-group">
+                    <label>Password *</label>
+                    <input type="password" id="regPassword" class="form-control" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn-submit" style="margin-top:10px;">Submit Registration</button>
+            </form>
+            <div id="fullRegAlert" class="alert-success" style="margin-top:15px;">
+                ✓ Registration completed successfully! Information sent to administration.
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo-box">
+                        <div class="logo-img-wrapper">
+                            <img src="wisdomlamdLogo.png" alt="Logo">
+                        </div>
+                        <div class="logo-text">
+                            <h2 style="color:var(--white);">WISDOMLAND</h2>
+                            <span>ACADEMY</span>
+                        </div>
+                    </div>
+                    <p>Empowering students through exceptional educational quality, strong ethics, and modern knowledge for a bright future.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#programs">Academics</a></li>
+                        <li><a href="#gallery">Campus Life</a></li>
+                        <li><a href="#news">News & Events</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Academics</h4>
+                    <ul class="footer-links">
+                        <li><a href="#programs">Early Childhood</a></li>
+                        <li><a href="#programs">Primary School</a></li>
+                        <li><a href="#programs">Secondary School</a></li>
+                        <li><a href="#programs">STEM & Clubs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <ul class="footer-links">
+                        <li>📍 Addis Ababa, Ethiopia</li>
+                        <li>📞 +251 11 XXX XXXX</li>
+                        <li>✉️ WisdomlandAcademy@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                © 2026 Wisdomland Academy. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= PROGRAM MODAL ================= -->
+    <div id="infoModal" class="modal-overlay" onclick="closeModalOnOutside(event)">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <div class="modal-icon">📖</div>
+            <h3 id="modalTitle" class="modal-title">Program Details</h3>
+            <p id="modalBody" class="modal-body">Program details will be displayed here...</p>
+            <div style="text-align:right;">
+                <button onclick="closeModal()" class="btn-primary" style="padding:10px 20px; font-size:0.9rem;">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'https://wisdomlandapi.onrender.com/api';
+        function toggleMobileMenu() {
+            const mobileDropdown = document.getElementById('mobileDropdown');
+            if (mobileDropdown) {
+                mobileDropdown.classList.toggle('active');
+            }
+        }
+
+        function openModal(title, body) {
+            const modal = document.getElementById('infoModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
+            if (!modal) return;
+            if (modalTitle) modalTitle.textContent = title || 'Program Details';
+            if (modalBody) modalBody.textContent = body || 'Program details will be displayed here...';
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('infoModal');
+            if (modal) modal.classList.remove('active');
+        }
+
+        function closeModalOnOutside(event) {
+            if (event.target.id === 'infoModal') {
+                closeModal();
+            }
+        }
+
+        async function handleFormSubmit(event) {
+            event.preventDefault();
+            const payload = {
+                sender: document.getElementById('contactName')?.value || '',
+                email: document.getElementById('contactEmail')?.value || '',
+                subject: document.getElementById('contactSubject')?.value || 'No Subject',
+                body: document.getElementById('contactMessage')?.value || ''
+            };
+            try {
+                const response = await fetch(`${API_BASE_URL}/messages`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                if (response.ok) {
+                    const alertBox = document.getElementById('formAlert');
+                    if (alertBox) alertBox.style.display = 'block';
+                    event.target.reset();
+                    setTimeout(() => {
+                        if (alertBox) alertBox.style.display = 'none';
+                    }, 4000);
+                } else {
+                    let errorMessage = 'Failed to send message.';
+                    try {
+                        const data = await response.json();
+                        errorMessage = data.error || errorMessage;
+                    } catch (e) {
+                        console.error('Error reading error response:', e);
+                    }
+                    alert(errorMessage);
+                }
+            } catch (error) {
+                console.error('Error sending message:', error);
+                alert('Could not connect to the server. Make sure server.js is running on port 3000.');
+            }
+        }
+
+        function openRegistrationModal() {
+            const modal = document.getElementById('registrationModal');
+            if (modal) modal.classList.add('active');
+        }
+
+        function closeRegistrationModal() {
+            const modal = document.getElementById('registrationModal');
+            if (modal) modal.classList.remove('active');
+        }
+
+        function closeRegistrationModalOnOutside(event) {
+            if (event.target.id === 'registrationModal') {
+                closeRegistrationModal();
+            }
+        }
+
+        async function handleFullRegistrationSubmit(event) {
+            event.preventDefault();
+            const payload = {
+                firstName: document.getElementById('regFirstName')?.value || '',
+                fatherName: document.getElementById('regFatherName')?.value || '',
+                grandfatherName: document.getElementById('regGrandfatherName')?.value || '',
+                studentId: document.getElementById('regStudentID')?.value || '',
+                email: document.getElementById('regEmail')?.value || '',
+                phone: document.getElementById('regPhone')?.value || '',
+                guardianName: document.getElementById('regGuardianName')?.value || '',
+                guardianPhone: document.getElementById('regGuardianPhone')?.value || '',
+                address: document.getElementById('regAddress')?.value || '',
+                password: document.getElementById('regPassword')?.value || ''
+            };
+            try {
+                const response = await fetch(`${API_BASE_URL}/register-student`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                if (response.ok) {
+                    const alertBox = document.getElementById('fullRegAlert');
+                    if (alertBox) alertBox.style.display = 'block';
+                    const form = document.getElementById('fullRegistrationForm');
+                    if (form) form.reset();
+                    setTimeout(() => {
+                        if (alertBox) alertBox.style.display = 'none';
+                        closeRegistrationModal();
+                    }, 2500);
+                } else {
+                    let errorMessage = 'Please check your inputs.';
+                    try {
+                        const errorData = await response.json();
+                        errorMessage = errorData.error || errorMessage;
+                    } catch (e) {
+                        console.error('Error reading registration error:', e);
+                    }
+                    alert(`Registration failed: ${errorMessage}`);
+                }
+            } catch (error) {
+                console.error('Error submitting student registration:', error);
+                alert('Could not connect to the server. Make sure server.js is running on port 3000.');
+            }
+        }
+
+        function escapeHtml(value) {
+            return String(value ?? '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        async function loadPublicNews() {
+            const newsContainer = document.getElementById('publicNewsList');
+            if (!newsContainer) return;
+            newsContainer.innerHTML = `<div class="news-status"> Loading latest news... </div>`;
+            try {
+                const response = await fetch(`${API_BASE_URL}/news`);
+                if (!response.ok) throw new Error('Could not load news');
+                const news = await response.json();
+                if (!Array.isArray(news) || news.length === 0) {
+                    newsContainer.innerHTML = `<div class="news-status"> No new announcements at this time. </div>`;
+                    return;
+                }
+                newsContainer.innerHTML = news.map(item => `
+                    <div class="news-card">
+                        <div class="news-date">
+                            <span class="news-date-day"> ${escapeHtml(item.day)} </span>
+                            <span class="news-date-month"> ${escapeHtml(item.month)} </span>
+                        </div>
+                        <div class="news-content">
+                            <h3> ${escapeHtml(item.title)} </h3>
+                            <p> ${escapeHtml(item.desc)} </p>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Error loading public news:', error);
+                newsContainer.innerHTML = `<div class="news-status"> ⚠️ Unable to load announcements. Please try again later. </div>`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            loadPublicNews();
+        });
+
+        document.addEventListener('visibilitychange', function () {
+            if (document.visibilityState === 'visible') {
+                loadPublicNews();
+            }
+        });
+
+        setInterval(loadPublicNews, 30000);
+    
+    
+    // 🔄 Auto update Customer data without refreshing the page
+setInterval(() => {
+    loadPublicNews();
+}, 5000);
+    </script>
+</body>
+</html>
